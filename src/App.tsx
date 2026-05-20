@@ -1,4 +1,4 @@
-import ProjectsPage from "./pages/ProjectsPage"
+import ProjectsPage from "./pages/projects/ProjectsPage"
 import { MantineProvider } from "@mantine/core"
 
 
