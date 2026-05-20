@@ -12,6 +12,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     loader: () => redirect('/projects'),
+    errorElement: <div>Page not found</div>,
   },
   {
     path: '/projects',
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
     path: '/projects/:id',
     Component: ProjectDetailPage,
     loader: projectDetailLoader,
+    errorElement: <div>Project not found</div>,
   },
 ])
 
