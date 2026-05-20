@@ -4,7 +4,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ProjectsPage from './pages/ProjectsPage'
 import { MantineProvider } from '@mantine/core'
-import { projectsLoader } from './pages/projectsLoader'
+import { projectsLoader } from './pages/ProjectsLoader'
 
 
 const router = createBrowserRouter([
