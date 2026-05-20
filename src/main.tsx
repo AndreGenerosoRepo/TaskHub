@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom'
 import { MantineProvider } from '@mantine/core'
 import { projectsLoader } from './pages/projects/ProjectsLoader'
 import { projectDetailLoader } from './pages/projects/ProjectDetailLoader'
@@ -9,6 +9,10 @@ import ProjectsPage from './pages/projects/ProjectsPage'
 import ProjectDetailPage  from './pages/projects/ProjectDetailPage'
 
 const router = createBrowserRouter([
+  {
+    path: '/',
+    loader: () => redirect('/projects'),
+  },
   {
     path: '/projects',
     Component: ProjectsPage,
