@@ -1,10 +1,24 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.tsx'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import ProjectsPage from './pages/ProjectsPage'
+import { MantineProvider } from '@mantine/core'
+import { projectsLoader } from './pages/projectsLoader'
+
+
+const router = createBrowserRouter([
+  {
+    path: '/projects',
+    Component: ProjectsPage,
+    loader: projectsLoader,
+  },
+])
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <MantineProvider>
+      <RouterProvider router={router} /> 
+    </MantineProvider> 
   </StrictMode>,
 )
