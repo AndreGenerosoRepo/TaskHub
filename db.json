@@ -42,7 +42,17 @@
     { "id": "6", "projectId": "2", "name": "Push notifications", "description": "Integrate push notifications", "status": "todo", "priority": "medium", "dueDate": "2024-02-15" },
     { "id": "7", "projectId": "3", "name": "Setup dashboard layout", "description": "Create the main dashboard layout", "status": "done", "priority": "high", "dueDate": "2024-01-10" },
     { "id": "8", "projectId": "3", "name": "Charts and graphs", "description": "Add analytics charts", "status": "in_progress", "priority": "medium", "dueDate": "2024-02-01" },
-    { "id": "9", "projectId": "3", "name": "User management", "description": "Build user management section", "status": "todo", "priority": "low", "dueDate": "2024-02-20" }
+    { "id": "9", "projectId": "3", "name": "User management", "description": "Build user management section", "status": "todo", "priority": "low", "dueDate": "2024-02-20" },
+    { "id": "10", "projectId": "1", "name": "Setup analytics", "description": "Integrate Google Analytics", "status": "todo", "priority": "medium", "dueDate": "2026-03-01" },
+    { "id": "11", "projectId": "1", "name": "Contact form", "description": "Build contact form with email integration", "status": "in_progress", "priority": "high", "dueDate": "2026-03-05" },
+    { "id": "12", "projectId": "2", "name": "Offline mode", "description": "Add offline support to the app", "status": "todo", "priority": "low", "dueDate": "2026-03-10" },
+    { "id": "13", "projectId": "2", "name": "Dark mode", "description": "Implement dark mode for the mobile app", "status": "todo", "priority": "medium", "dueDate": "2026-03-15" },
+    { "id": "14", "projectId": "2", "name": "Performance audit", "description": "Run performance audit and fix bottlenecks", "status": "in_progress", "priority": "high", "dueDate": "2026-03-20" },
+    { "id": "15", "projectId": "3", "name": "Export to CSV", "description": "Allow users to export data to CSV", "status": "todo", "priority": "low", "dueDate": "2026-03-25" },
+    { "id": "16", "projectId": "3", "name": "Role permissions", "description": "Add role-based access control", "status": "in_progress", "priority": "high", "dueDate": "2026-04-01" },
+    { "id": "17", "projectId": "J1pMxv54YkM", "name": "Project structure parser", "description": "Parse and analyze project folder structure", "status": "todo", "priority": "high", "dueDate": "2026-04-05" },
+    { "id": "18", "projectId": "J1pMxv54YkM", "name": "Framework detection", "description": "Auto-detect frameworks and dependencies", "status": "in_progress", "priority": "high", "dueDate": "2026-04-10" },
+    { "id": "19", "projectId": "J1pMxv54YkM", "name": "AI integration", "description": "Integrate AI model for code analysis", "status": "todo", "priority": "medium", "dueDate": "2026-04-15" }
   ],
   "$schema": "./node_modules/json-server/schema.json"
 }
