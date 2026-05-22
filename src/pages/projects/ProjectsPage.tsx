@@ -1,5 +1,5 @@
 import ProjectCard from "../../components/ProjectCard"
-import { useProjects } from '../../hooks/useProjects'
+import { useProjects, useCreateProject } from '../../hooks/useProjects'
 import { Modal, Button, TextInput, Textarea, Group } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { useForm } from '@mantine/form'
@@ -18,6 +18,8 @@ function ProjectsPage() {
           description: (value) => value.trim().length === 0 ? 'Description is required' : null,
         },
       })
+
+      const { mutate: createProject } = useCreateProject()
 
 
       if (isLoading) return <div>Loading...</div>
@@ -43,11 +45,12 @@ function ProjectsPage() {
               {...form.getInputProps('description')}
             />
             <Button mt="md" onClick={() => {
-              if (form.validate().hasErrors) return
-              close()
-              form.reset()
-            }}>
-              Create Project
+                if (form.validate().hasErrors) return
+                createProject(form.values)
+                close()
+                form.reset()
+                }}>
+                Create Project
             </Button>
           </Modal>
       
