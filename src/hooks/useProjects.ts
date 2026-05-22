@@ -49,3 +49,40 @@ export function useCreateProject() {
     },
   })
 }
+
+async function updateProject(project: { id: string; status: 'active' | 'archived' }) {
+  const response = await fetch(`http://localhost:3000/projects/${project.id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ status: project.status }),
+  })
+  return response.json()
+}
+
+export function useUpdateProject() {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: updateProject,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['projects'] })
+    },
+  })
+}
+
+async function deleteProject(id: string) {
+  await fetch(`http://localhost:3000/projects/${id}`, {
+    method: 'DELETE',
+  })
+}
+
+export function useDeleteProject() {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: deleteProject,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['projects'] })
+    },
+  })
+}
