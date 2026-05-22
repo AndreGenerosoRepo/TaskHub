@@ -4,7 +4,6 @@ import './index.css'
 import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom'
 import { MantineProvider } from '@mantine/core'
 import '@mantine/core/styles.css'
-import { projectDetailLoader } from './pages/projects/ProjectDetailLoader'
 import ProjectsPage from './pages/projects/ProjectsPage'
 import ProjectDetailPage  from './pages/projects/ProjectDetailPage'
 import Layout from './components/layout/Layout'
@@ -29,7 +28,6 @@ const router = createBrowserRouter([
       {
         path: 'projects/:id',
         Component: ProjectDetailPage,
-        loader: projectDetailLoader,
         errorElement: <div>Project not found</div>,
       },
     ]
