@@ -6,7 +6,7 @@ function Layout() {
 
     return(
         <AppShell
-            //valores recomendados pela documentacao Mantine
+            //valores default recomendados pela documentacao Mantine
             header={{ height: 60 }}
             navbar={{ width:200, breakpoint: 'sm' }}
             padding= "md"
