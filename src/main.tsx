@@ -8,23 +8,30 @@ import { projectsLoader } from './pages/projects/ProjectsLoader'
 import { projectDetailLoader } from './pages/projects/ProjectDetailLoader'
 import ProjectsPage from './pages/projects/ProjectsPage'
 import ProjectDetailPage  from './pages/projects/ProjectDetailPage'
+import Layout from './components/layout/Layout'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    loader: () => redirect('/projects'),
+    Component: Layout,
     errorElement: <div>Page not found</div>,
-  },
-  {
-    path: '/projects',
-    Component: ProjectsPage,
-    loader: projectsLoader,
-  },
-  {
-    path: '/projects/:id',
-    Component: ProjectDetailPage,
-    loader: projectDetailLoader,
-    errorElement: <div>Project not found</div>,
+    children: [
+      {
+        index: true,
+        loader: () => redirect('/projects'),
+      },
+      {
+        path: 'projects',
+        Component: ProjectsPage,
+        loader: projectsLoader,
+      },
+      {
+        path: 'projects/:id',
+        Component: ProjectDetailPage,
+        loader: projectDetailLoader,
+        errorElement: <div>Project not found</div>,
+      },
+    ]
   },
 ])
 

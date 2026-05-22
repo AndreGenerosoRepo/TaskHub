@@ -4,3 +4,7 @@
     padding: 16px;
     margin-bottom: 12px;
   }
+
+.link {
+  text-decoration: none;
+}
