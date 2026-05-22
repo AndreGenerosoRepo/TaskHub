@@ -9,7 +9,10 @@ import { projectDetailLoader } from './pages/projects/ProjectDetailLoader'
 import ProjectsPage from './pages/projects/ProjectsPage'
 import ProjectDetailPage  from './pages/projects/ProjectDetailPage'
 import Layout from './components/layout/Layout'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
+
+const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
     path: '/',
@@ -37,8 +40,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <MantineProvider>
-      <RouterProvider router={router} /> 
-    </MantineProvider> 
+    <QueryClientProvider client={queryClient}>
+      <MantineProvider>
+        <RouterProvider router={router} />
+      </MantineProvider>
+    </QueryClientProvider>
   </StrictMode>,
 )

@@ -1,12 +1,11 @@
-import type { Project } from "../../types"
 import ProjectCard from "../../components/ProjectCard"
-import { useLoaderData } from "react-router-dom"
+import { useProjects } from '../../hooks/useProjects'
 import { Modal, Button, TextInput, Textarea, Group } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { useForm } from '@mantine/form'
 
 function ProjectsPage() {
-    const projects = useLoaderData() as Project[]
+    const { data: projects, isLoading, isError } = useProjects()
     const [opened, { open, close }] = useDisclosure(false)
 
     const form = useForm({
@@ -19,6 +18,10 @@ function ProjectsPage() {
           description: (value) => value.trim().length === 0 ? 'Description is required' : null,
         },
       })
+
+
+      if (isLoading) return <div>Loading...</div>
+      if (isError) return <div>Error loading projects</div>
 
       return (
         <>
