@@ -8,6 +8,7 @@ import ProjectsPage from './pages/projects/ProjectsPage'
 import ProjectDetailPage  from './pages/projects/ProjectDetailPage'
 import Layout from './components/layout/Layout'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import TasksPage from './pages/tasks/TasksPage'
 
 
 const queryClient = new QueryClient()
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
         path: 'projects/:id',
         Component: ProjectDetailPage,
         errorElement: <div>Project not found</div>,
+      },
+      {
+        path: 'tasks',
+        Component: TasksPage,
       },
     ]
   },

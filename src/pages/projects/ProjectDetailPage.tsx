@@ -1,16 +1,20 @@
-import type { Project } from "../../types"
-import { useLoaderData } from "react-router-dom"
-
+import { useParams } from 'react-router-dom'
+import { useProject } from '../../hooks/useProjects'
 
 function ProjectDetailPage() {
-    const projectDetail = useLoaderData() as Project
+  const { id } = useParams<{ id: string }>()
+  const { data: project, isLoading, isError } = useProject(id!)
 
-    return (
-        <div>
-            <h1>{projectDetail.name}</h1>
-            <p>{projectDetail.description}</p>
-        </div>
-    )
+  if (isLoading) return <div>Loading...</div>
+  if (isError) return <div>Error loading project</div>
+  if (!project) return <div>Project not found</div>
+
+  return (
+    <div>
+      <h1>{project.name}</h1>
+      <p>{project.description}</p>
+    </div>
+  )
 }
 
 export default ProjectDetailPage

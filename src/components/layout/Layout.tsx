@@ -26,6 +26,11 @@ function Layout() {
                     to="/projects"
                     label="Projects"
                 />
+                <NavLink
+                    component={Link}
+                    to="/tasks"
+                    label="Overall Tasks"
+                />
             </AppShell.Navbar>
 
             <AppShell.Main>
