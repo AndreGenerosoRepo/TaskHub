@@ -3,6 +3,7 @@ import { useProjects, useCreateProject } from '../../hooks/useProjects'
 import { Modal, Button, TextInput, Textarea, Group } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { useForm } from '@mantine/form'
+import { useProjectsStore } from '../../store/projectsStore'
 
 function ProjectsPage() {
     const { data: projects, isLoading, isError } = useProjects()
@@ -20,16 +21,28 @@ function ProjectsPage() {
       })
 
       const { mutate: createProject } = useCreateProject()
+      const { filter, setFilter } = useProjectsStore()
 
 
       if (isLoading) return <div>Loading...</div>
       if (isError) return <div>Error loading projects</div>
+
+      const filteredProjects = projects?.filter((project) => {
+        if (filter === 'all') return true
+        return project.status === filter
+      }) ?? []
 
       return (
         <>
           <Group justify="space-between" mb="md">
             <h1>Projects</h1>
             <Button onClick={open}>New Project</Button>
+          </Group>
+
+          <Group mb="md">
+            <Button variant={filter === 'all' ? 'filled' : 'outline'} onClick={() => setFilter('all')}>All</Button>
+            <Button variant={filter === 'active' ? 'filled' : 'outline'} onClick={() => setFilter('active')}>Active</Button>
+            <Button variant={filter === 'archived' ? 'filled' : 'outline'} onClick={() => setFilter('archived')}>Archived</Button>
           </Group>
       
           <Modal opened={opened} onClose={close} title="New Project">
@@ -55,7 +68,7 @@ function ProjectsPage() {
           </Modal>
       
           <ul>
-            {projects.map((project) => (
+            {filteredProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </ul>

@@ -9,7 +9,9 @@ function ProjectCard({ project }: { project: Project }) {
           <Card shadow="sm" padding="lg" radius="md" withBorder>
             <Group justify="space-between">
               <Text fw={500}>{project.name}</Text>
-              <Badge color="blue">Active</Badge>
+              <Badge color={project.status === 'active' ? 'blue' : 'gray'}>
+                {project.status}
+              </Badge>
             </Group>
             <Text size="sm" c="dimmed" mt="sm">
               {project.description}
