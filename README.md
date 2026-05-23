@@ -1,73 +1,100 @@
-# React + TypeScript + Vite
+# TaskHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A task and project management app built to practice the frontend stack used at my new company.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + TypeScript
+- **Vite** — bundler
+- **React Router** — Data Mode
+- **Mantine** — UI components and theming
+- **CSS Modules** + PostCSS — styling
+- **TanStack Query** — data fetching and cache
+- **TanStack Table** — sortable, filterable, paginated tables
+- **Zustand** — global UI state
+- **@dnd-kit** — drag and drop for kanban
+- **json-server** — simulated REST API
+- **ESLint** + OxLint — linting
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- List, create, edit, archive and delete projects
+- Filter projects by status: All, Active, Archived
+- Kanban board per project with drag and drop between columns (To do, In progress, Done)
+- Create, edit and delete tasks within each project
+- Overall Tasks — read-only table with sorting, filtering and pagination across all projects
+- Dark mode toggle
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js 18+
+- npm
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/YOUR_USERNAME/taskhub.git
+cd taskhub
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Running the app
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+You need two terminals:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Terminal 1 — API (port 3000):**
+```bash
+npx json-server db.json
 ```
+
+**Terminal 2 — App (port 5173):**
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Project Structure
+
+```
+src/
+  components/
+    layout/       — AppShell with Header and Navbar
+    KanbanBoard   — Drag and drop kanban board
+    ProjectCard   — Project card with actions
+  hooks/
+    useProjects   — TanStack Query hooks for projects
+    useTasks      — TanStack Query hooks for tasks
+  pages/
+    projects/     — Projects list and detail pages
+    tasks/        — Overall tasks table
+  store/
+    projectsStore — Zustand store for project filters
+  types.ts        — Shared TypeScript interfaces
+```
+
+## What I learned
+
+This project was built in 6 days with spare time during a study period to practice the frontend stack used at Logrise company.
+
+### Key concepts practiced
+
+- **React Router Data Mode** — understanding the difference between Declarative Mode and Data Mode, and why loaders are preferable to useEffect for data fetching
+- **TanStack Query** — managing server state, cache invalidation, optimistic updates and mutations
+- **TanStack Table** — building sortable, filterable and paginated tables with custom column definitions
+- **Mantine** — composing complex UIs with a component library, theming, dark mode and form validation
+- **Zustand** — managing global UI state separately from server state
+- **CSS Modules** — writing scoped styles without CSS-in-JS
+- **@dnd-kit** — implementing accessible drag and drop for the kanban board
+- **CLAUDE.md / AGENTS.md** — providing context to AI tools for better code generation
+- **Symlinks** — sharing a single CLAUDE.md across multiple tools via symlink
+
+### Decisions made
+
+- Used **Data Mode** over Declarative Mode in React Router following team preference
+- Chose **Mantine** as the UI library for its strong community and Material Design inspiration
+- Organized folders **by feature** (projects/, tasks/) rather than by type (components/, pages/)
+- Used **json-server** to simulate a REST API without a real backend
+- Avoided **CSS-in-JS** entirely, using CSS Modules and PostCSS instead
