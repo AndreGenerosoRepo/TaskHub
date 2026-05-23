@@ -5,6 +5,7 @@ import { Card, Text, Badge, Group, Button, Modal, TextInput, Textarea } from '@m
 import { useUpdateProject, useDeleteProject, useEditProject } from '../hooks/useProjects'
 import { useDisclosure } from '@mantine/hooks'
 import { useForm } from '@mantine/form'
+import dayjs from 'dayjs'
 
 function ProjectCard({ project }: { project: Project }) {
     const { mutate: updateProject } = useUpdateProject()
@@ -44,17 +45,20 @@ function ProjectCard({ project }: { project: Project }) {
             </Modal>
 
             <Link to={`/projects/${project.id}`} className={styles.link}>
-                <Card shadow="sm" padding="lg" radius="md" withBorder>
+                <Card shadow="sm" padding="lg" radius="md" withBorder className={styles.card}>
                     <Group justify="space-between">
                         <Text fw={500}>{project.name}</Text>
                         <Badge color={project.status === 'active' ? 'blue' : 'gray'}>
                             {project.status}
                         </Badge>
                     </Group>
-                    <Text size="sm" c="dimmed" mt="sm">
+                    <Text size="sm" c="dimmed" mt="sm" className={styles.description}>
                         {project.description}
                     </Text>
-                    <Group mt="md">
+                    <Text size="xs" c="dimmed" mt="xs">
+                        Created {dayjs(project.createdAt).format('DD MMM YYYY')}
+                    </Text>
+                    <Group className={styles.actions}>
                         <Button
                             size="xs"
                             variant="outline"

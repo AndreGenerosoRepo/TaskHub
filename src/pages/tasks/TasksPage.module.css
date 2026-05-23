@@ -1,0 +1,47 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  
+  .table thead tr {
+    border-bottom: 2px solid light-dark(#dee2e6, #373a40);
+  }
+  
+  .table th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: light-dark(#5e6c84, #909296);
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .table th:hover {
+    color: light-dark(#172b4d, #c1c2c5);
+  }
+  
+  .table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid light-dark(#f1f3f5, #2c2e33);
+  }
+  
+  .table tbody tr:hover {
+    background: light-dark(#f8f9fa, #2c2e33);
+  }
+  
+  .pagination {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    justify-content: flex-end;
+  }
+  
+  .pageInfo {
+    font-size: 13px;
+    color: light-dark(#5e6c84, #909296);
+  }

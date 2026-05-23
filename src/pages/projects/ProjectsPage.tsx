@@ -1,13 +1,16 @@
 import ProjectCard from "../../components/ProjectCard"
 import { useProjects, useCreateProject } from '../../hooks/useProjects'
-import { Modal, Button, TextInput, Textarea, Group } from '@mantine/core'
+import { Modal, Button, TextInput, Textarea, Group, Title, SegmentedControl, Loader, Alert } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { useForm } from '@mantine/form'
 import { useProjectsStore } from '../../store/projectsStore'
+import styles from './ProjectsPage.module.css'
 
 function ProjectsPage() {
     const { data: projects, isLoading, isError } = useProjects()
     const [opened, { open, close }] = useDisclosure(false)
+    const { mutate: createProject } = useCreateProject()
+    const { filter, setFilter } = useProjectsStore()
 
     const form = useForm({
         initialValues: {
@@ -18,62 +21,71 @@ function ProjectsPage() {
           name: (value) => value.trim().length === 0 ? 'Name is required' : null,
           description: (value) => value.trim().length === 0 ? 'Description is required' : null,
         },
-      })
+    })
 
-      const { mutate: createProject } = useCreateProject()
-      const { filter, setFilter } = useProjectsStore()
+    if (isLoading) return (
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '48px' }}>
+          <Loader />
+        </div>
+      )
+      if (isError) return (
+        <Alert color="red" variant="light" mt="md">
+          Something went wrong. Please try again later.
+        </Alert>
+      )
 
-
-      if (isLoading) return <div>Loading...</div>
-      if (isError) return <div>Error loading projects</div>
-
-      const filteredProjects = projects?.filter((project) => {
+    const filteredProjects = projects?.filter((project) => {
         if (filter === 'all') return true
         return project.status === filter
-      }) ?? []
+    }) ?? []
 
-      return (
+    return (
         <>
-          <Group justify="space-between" mb="md">
-            <h1>Projects</h1>
-            <Button onClick={open}>New Project</Button>
-          </Group>
+            <Group justify="space-between" mb="md">
+                <Title order={2}>Projects</Title>
+                <Button onClick={open}>New Project</Button>
+            </Group>
 
-          <Group mb="md">
-            <Button variant={filter === 'all' ? 'filled' : 'outline'} onClick={() => setFilter('all')}>All</Button>
-            <Button variant={filter === 'active' ? 'filled' : 'outline'} onClick={() => setFilter('active')}>Active</Button>
-            <Button variant={filter === 'archived' ? 'filled' : 'outline'} onClick={() => setFilter('archived')}>Archived</Button>
-          </Group>
-      
-          <Modal opened={opened} onClose={close} title="New Project">
-            <TextInput
-              label="Name"
-              placeholder="Project name"
-              {...form.getInputProps('name')}
+            <SegmentedControl
+                mb="md"
+                value={filter}
+                onChange={(value) => setFilter(value as 'all' | 'active' | 'archived')}
+                data={[
+                    { label: 'All', value: 'all' },
+                    { label: 'Active', value: 'active' },
+                    { label: 'Archived', value: 'archived' },
+                ]}
             />
-            <Textarea
-              label="Description"
-              placeholder="Project description"
-              mt="sm"
-              {...form.getInputProps('description')}
-            />
-            <Button mt="md" onClick={() => {
-                if (form.validate().hasErrors) return
-                createProject(form.values)
-                close()
-                form.reset()
+
+            <Modal opened={opened} onClose={close} title="New Project">
+                <TextInput
+                    label="Name"
+                    placeholder="Project name"
+                    {...form.getInputProps('name')}
+                />
+                <Textarea
+                    label="Description"
+                    placeholder="Project description"
+                    mt="sm"
+                    {...form.getInputProps('description')}
+                />
+                <Button mt="md" onClick={() => {
+                    if (form.validate().hasErrors) return
+                    createProject(form.values)
+                    close()
+                    form.reset()
                 }}>
-                Create Project
-            </Button>
-          </Modal>
-      
-          <ul>
-            {filteredProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </ul>
+                    Create Project
+                </Button>
+            </Modal>
+
+            <div className={styles.grid}>
+                {filteredProjects.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
+                ))}
+            </div>
         </>
-      )
+    )
 }
 
 export default ProjectsPage

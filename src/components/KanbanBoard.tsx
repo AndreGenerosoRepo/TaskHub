@@ -3,11 +3,12 @@ import type { DragEndEvent } from '@dnd-kit/core'
 import { useDroppable, useDraggable } from '@dnd-kit/core'
 import type { Task } from '../types'
 import { useUpdateTask, useDeleteTask, useEditTask } from '../hooks/useTasks'
-import { Modal, Button, TextInput, Textarea, Select, Group } from '@mantine/core'
-import { useDisclosure } from '@mantine/hooks'
-import { useForm } from '@mantine/form'
+import { Badge, Button, Group, Text, Modal, TextInput, Textarea, Select } from '@mantine/core'
 import { DateInput } from '@mantine/dates'
 import '@mantine/dates/styles.css'
+import { useDisclosure } from '@mantine/hooks'
+import { useForm } from '@mantine/form'
+import styles from './KanbanBoard.module.css'
 
 function KanbanCard({ task }: { task: Task }) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
@@ -33,6 +34,8 @@ function KanbanCard({ task }: { task: Task }) {
   const style = transform ? {
     transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
   } : undefined
+
+  const priorityClass = task.priority === 'high' ? styles.cardHigh : task.priority === 'medium' ? styles.cardMedium : styles.cardLow
 
   return (
     <>
@@ -70,14 +73,29 @@ function KanbanCard({ task }: { task: Task }) {
         </Button>
       </Modal>
 
-      <div ref={setNodeRef} style={style}>
-        <div {...listeners} {...attributes}>
-          <p>{task.name}</p>
-          <p>{task.priority}</p>
+      <div
+        ref={setNodeRef}
+        style={style}
+        className={`${styles.card} ${priorityClass}`}
+      >
+        <div {...listeners} {...attributes} style={{ cursor: 'grab' }}>
+          <div className={styles.cardTitle}>{task.name}</div>
+          {task.description && (
+            <Text size="xs" c="dimmed" mb="xs">{task.description}</Text>
+          )}
+          <div className={styles.cardMeta}>
+            <Badge
+              size="xs"
+              color={task.priority === 'high' ? 'red' : task.priority === 'medium' ? 'yellow' : 'green'}
+            >
+              {task.priority}
+            </Badge>
+            <Text className={styles.cardDate}>{task.dueDate}</Text>
+          </div>
         </div>
-        <Group gap="xs">
-          <Button size="xs" variant="outline" onClick={open}>Edit</Button>
-          <Button size="xs" variant="outline" color="red" onClick={() => deleteTask(task.id)}>Delete</Button>
+        <Group className={styles.cardActions} gap="xs">
+          <Button size="xs" variant="light" onClick={open}>Edit</Button>
+          <Button size="xs" variant="light" color="red" onClick={() => deleteTask(task.id)}>Delete</Button>
         </Group>
       </div>
     </>
@@ -92,8 +110,11 @@ function KanbanColumn({ title, tasks, status }: {
   const { setNodeRef } = useDroppable({ id: status })
 
   return (
-    <div ref={setNodeRef} style={{ minHeight: '200px', padding: '8px', flex: 1 }}>
-      <h3>{title}</h3>
+    <div ref={setNodeRef} className={styles.column}>
+      <div className={styles.columnHeader}>
+        <span className={styles.columnTitle}>{title}</span>
+        <span className={styles.columnCount}>{tasks.length}</span>
+      </div>
       {tasks.map(task => (
         <KanbanCard key={task.id} task={task} />
       ))}
@@ -120,7 +141,7 @@ function KanbanBoard({ tasks }: { tasks: Task[] }) {
 
   return (
     <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-      <div style={{ display: 'flex', gap: '16px' }}>
+      <div className={styles.board}>
         {columns.map(column => (
           <KanbanColumn
             key={column.id}

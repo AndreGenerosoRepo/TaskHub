@@ -15,7 +15,10 @@ export function useProjects() {
 
 async function fetchProject(id: string): Promise<Project> {
   const response = await fetch(`http://localhost:3000/projects/${id}`)
-  return response.json()
+  if (!response.ok) throw new Error('Project not found')
+  const data = await response.json()
+  if (!data || !data.id) throw new Error('Project not found')
+  return data
 }
 
 export function useProject(id: string) {
@@ -41,7 +44,6 @@ async function createProject(project: { name: string; description: string }) {
 
 export function useCreateProject() {
   const queryClient = useQueryClient()
-
   return useMutation({
     mutationFn: createProject,
     onSuccess: () => {
@@ -61,7 +63,6 @@ async function updateProject(project: { id: string; status: 'active' | 'archived
 
 export function useUpdateProject() {
   const queryClient = useQueryClient()
-
   return useMutation({
     mutationFn: updateProject,
     onSuccess: () => {
@@ -78,7 +79,6 @@ async function deleteProject(id: string) {
 
 export function useDeleteProject() {
   const queryClient = useQueryClient()
-
   return useMutation({
     mutationFn: deleteProject,
     onSuccess: () => {

@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { useTasks } from '../../hooks/useTasks'
 import { useProjects } from '../../hooks/useProjects'
 import type { Task } from '../../types'
+import { Badge, Button, Title, Alert, Loader } from '@mantine/core'
+import styles from './TasksPage.module.css'
 
 function TasksPage() {
   const { data: projects } = useProjects()
@@ -26,10 +28,21 @@ function TasksPage() {
     {
       accessorKey: 'status',
       header: 'Status',
+      cell: ({ row }) => {
+        const status = row.original.status
+        const color = status === 'done' ? 'green' : status === 'in_progress' ? 'blue' : 'gray'
+        const label = status === 'in_progress' ? 'In Progress' : status === 'done' ? 'Done' : 'To Do'
+        return <Badge color={color} size="sm">{label}</Badge>
+      }
     },
     {
       accessorKey: 'priority',
       header: 'Priority',
+      cell: ({ row }) => {
+        const priority = row.original.priority
+        const color = priority === 'high' ? 'red' : priority === 'medium' ? 'yellow' : 'green'
+        return <Badge color={color} size="sm">{priority}</Badge>
+      },
       sortingFn: (rowA, rowB) => {
         const order = { high: 0, medium: 1, low: 2 }
         return order[rowA.original.priority] - order[rowB.original.priority]
@@ -50,16 +63,27 @@ function TasksPage() {
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    initialState: { pagination: { pageSize: 5 } },
+    initialState: { pagination: { pageSize: 8 } },
   })
 
-  if (isLoading) return <div>Loading...</div>
-  if (isError) return <div>Error loading tasks</div>
+  if (isLoading) return (
+    <div className={styles.loading}>
+      <Loader />
+    </div>
+  )
+  if (isError) return (
+    <Alert color="red" variant="light" mt="md">
+      Something went wrong. Please try again later.
+    </Alert>
+  )
 
   return (
     <div>
-      <h1>Overall Tasks</h1>
-      <table>
+      <Title order={2} mb="sm">Overall Tasks</Title>
+      <Alert color="blue" variant="light" mb="md">
+        This is a read-only view of all tasks across all projects. To manage tasks, go to Projects and click on the project you want to edit.
+      </Alert>
+      <table className={styles.table}>
         <thead>
           {table.getHeaderGroups().map(headerGroup => (
             <tr key={headerGroup.id}>
@@ -84,16 +108,16 @@ function TasksPage() {
           ))}
         </tbody>
       </table>
-      <div>
-        <button onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
+      <div className={styles.pagination}>
+        <Button size="xs" variant="outline" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
           Previous
-        </button>
-        <span>
+        </Button>
+        <span className={styles.pageInfo}>
           Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
         </span>
-        <button onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
+        <Button size="xs" variant="outline" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
           Next
-        </button>
+        </Button>
       </div>
     </div>
   )

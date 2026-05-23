@@ -1,0 +1,13 @@
+.title {
+    line-height: 1;
+  }
+  
+  .badgeWrapper {
+    display: flex;
+    align-items: center;
+}
+.loading {
+    display: flex;
+    justify-content: center;
+    padding: 48px;
+}
