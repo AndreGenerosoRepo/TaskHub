@@ -42,7 +42,7 @@ function ProjectsPage() {
     return (
         <>
             <Group justify="space-between" mb="md">
-                <Title order={2}>Projects</Title>
+                <Title order={2} mb="md" c="blue">Projects</Title>
                 <Button onClick={open}>New Project</Button>
             </Group>
 

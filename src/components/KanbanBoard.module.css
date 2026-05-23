@@ -65,10 +65,24 @@
     border-left-color: #40c057;
   }
   
+  .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+  }
+  
   .cardTitle {
     font-size: 13px;
     font-weight: 500;
     margin-bottom: 6px;
+  }
+  
+  .cardCreatedAt {
+    font-size: 10px;
+    color: light-dark(#5e6c84, #909296);
+    white-space: nowrap;
+    margin-left: 8px;
   }
   
   .cardMeta {

@@ -61,7 +61,7 @@ function ProjectCard({ project }: { project: Project }) {
                     <Group className={styles.actions}>
                         <Button
                             size="xs"
-                            variant="outline"
+                            variant="light"
                             onClick={(e) => {
                                 e.preventDefault()
                                 open()
@@ -71,7 +71,7 @@ function ProjectCard({ project }: { project: Project }) {
                         </Button>
                         <Button
                             size="xs"
-                            variant="outline"
+                            variant="light"
                             onClick={(e) => {
                                 e.preventDefault()
                                 updateProject({ id: project.id, status: project.status === 'active' ? 'archived' : 'active' })
@@ -81,7 +81,7 @@ function ProjectCard({ project }: { project: Project }) {
                         </Button>
                         <Button
                             size="xs"
-                            variant="outline"
+                            variant="light"
                             color="red"
                             onClick={(e) => {
                                 e.preventDefault()

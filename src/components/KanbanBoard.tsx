@@ -9,6 +9,7 @@ import '@mantine/dates/styles.css'
 import { useDisclosure } from '@mantine/hooks'
 import { useForm } from '@mantine/form'
 import styles from './KanbanBoard.module.css'
+import dayjs from 'dayjs'
 
 function KanbanCard({ task }: { task: Task }) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
@@ -79,7 +80,10 @@ function KanbanCard({ task }: { task: Task }) {
         className={`${styles.card} ${priorityClass}`}
       >
         <div {...listeners} {...attributes} style={{ cursor: 'grab' }}>
-          <div className={styles.cardTitle}>{task.name}</div>
+        <div className={styles.cardHeader}>
+        <div className={styles.cardTitle}>{task.name}</div>
+            <span className={styles.cardCreatedAt}>Created at: {dayjs(task.createdAt).format('DD MMM YY')}</span>
+        </div>
           {task.description && (
             <Text size="xs" c="dimmed" mb="xs">{task.description}</Text>
           )}
@@ -90,7 +94,7 @@ function KanbanCard({ task }: { task: Task }) {
             >
               {task.priority}
             </Badge>
-            <Text className={styles.cardDate}>{task.dueDate}</Text>
+            <Text className={styles.cardDate}>Due at: {dayjs(task.dueDate).format('DD MMM YYYY')}</Text>
           </div>
         </div>
         <Group className={styles.cardActions} gap="xs">
