@@ -77,3 +77,22 @@ export function useDeleteTask() {
     },
   })
 }
+
+async function editTask(task: { id: string; name: string; description: string; priority: 'low' | 'medium' | 'high'; dueDate: string }) {
+  const response = await fetch(`http://localhost:3000/tasks/${task.id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: task.name, description: task.description, priority: task.priority, dueDate: task.dueDate }),
+  })
+  return response.json()
+}
+
+export function useEditTask() {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: editTask,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['tasks'] })
+    },
+  })
+}

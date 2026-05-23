@@ -10,6 +10,8 @@ import { useDisclosure } from '@mantine/hooks'
 import { useForm } from '@mantine/form'
 import { DateInput } from '@mantine/dates'
 import '@mantine/dates/styles.css'
+import KanbanBoard from '../../components/KanbanBoard'
+
 
 function ProjectDetailPage() {
   const { id } = useParams<{ id: string }>()
@@ -119,31 +121,7 @@ function ProjectDetailPage() {
       </Modal>
 
       <h2>Tasks</h2>
-      <table>
-        <thead>
-          {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map(header => (
-                <th key={header.id} onClick={header.column.getToggleSortingHandler()}>
-                  {flexRender(header.column.columnDef.header, header.getContext())}
-                  {header.column.getIsSorted() === 'asc' ? ' ↑' : header.column.getIsSorted() === 'desc' ? ' ↓' : ''}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map(row => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map(cell => (
-                <td key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <KanbanBoard tasks={tasks ?? []} />
     </div>
   )
 }

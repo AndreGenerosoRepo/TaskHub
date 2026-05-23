@@ -86,3 +86,22 @@ export function useDeleteProject() {
     },
   })
 }
+
+async function editProject(project: { id: string; name: string; description: string }) {
+  const response = await fetch(`http://localhost:3000/projects/${project.id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: project.name, description: project.description }),
+  })
+  return response.json()
+}
+
+export function useEditProject() {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: editProject,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['projects'] })
+    },
+  })
+}

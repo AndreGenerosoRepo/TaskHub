@@ -26,8 +26,8 @@
     },
     {
       "id": "J1pMxv54YkM",
-      "name": "Project X",
-      "description": "Build an AI system that can intelligently analyze, understand, and detect the structure of a software project.",
+      "name": "Project Xcalibur",
+      "description": "Build an AI system that can intelligently analyze, understand, and detect the structure of a software project. This is gonna be a pure AI Project.",
       "status": "active",
       "createdAt": "2026-05-22T13:10:19.085Z",
       "updatedAt": "2026-05-22T13:10:19.085Z"
@@ -48,7 +48,7 @@
       "projectId": "1",
       "name": "Fix navigation bug",
       "description": "Fix the mobile navigation menu",
-      "status": "todo",
+      "status": "in_progress",
       "priority": "medium",
       "dueDate": "2024-02-05"
     },
@@ -58,7 +58,7 @@
       "name": "SEO optimization",
       "description": "Improve SEO across all pages",
       "status": "todo",
-      "priority": "low",
+      "priority": "medium",
       "dueDate": "2024-02-10"
     },
     {
