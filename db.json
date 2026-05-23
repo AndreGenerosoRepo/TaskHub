@@ -3,34 +3,130 @@
     {
       "id": "1",
       "name": "Company Website",
-      "description": "Redesign the company website",
+      "description": "Redesign the company website to improve user experience",
       "status": "active",
-      "createdAt": "2024-01-01",
-      "updatedAt": "2024-01-01"
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
     },
     {
       "id": "2",
       "name": "Mobile App",
       "description": "Mobile app for Android and iOS",
       "status": "active",
-      "createdAt": "2024-01-01",
-      "updatedAt": "2024-01-01"
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
     },
     {
       "id": "3",
       "name": "Internal Dashboard",
       "description": "Dashboard for the internal team",
       "status": "archived",
-      "createdAt": "2024-01-01",
-      "updatedAt": "2024-01-01"
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
     },
     {
       "id": "J1pMxv54YkM",
       "name": "Project Xcalibur",
-      "description": "Build an AI system that can intelligently analyze, understand, and detect the structure of a software project. This is gonna be a pure AI Project.",
+      "description": "Build an AI system that can intelligently analyze and detect the structure of a software project.",
       "status": "active",
       "createdAt": "2026-05-22T13:10:19.085Z",
       "updatedAt": "2026-05-22T13:10:19.085Z"
+    },
+    {
+      "id": "5",
+      "name": "E-commerce Platform",
+      "description": "Build a full e-commerce platform with payments and inventory management",
+      "status": "active",
+      "createdAt": "2026-01-10T00:00:00.000Z",
+      "updatedAt": "2026-01-10T00:00:00.000Z"
+    },
+    {
+      "id": "6",
+      "name": "CRM System",
+      "description": "Customer relationship management system for the sales team",
+      "status": "active",
+      "createdAt": "2026-02-01T00:00:00.000Z",
+      "updatedAt": "2026-02-01T00:00:00.000Z"
+    },
+    {
+      "id": "7",
+      "name": "API Gateway",
+      "description": "Centralized API gateway for all microservices",
+      "status": "archived",
+      "createdAt": "2026-02-15T00:00:00.000Z",
+      "updatedAt": "2026-02-15T00:00:00.000Z"
+    },
+    {
+      "id": "8",
+      "name": "Design System",
+      "description": "Company-wide design system and component library",
+      "status": "active",
+      "createdAt": "2026-03-01T00:00:00.000Z",
+      "updatedAt": "2026-03-01T00:00:00.000Z"
+    },
+    {
+      "id": "9",
+      "name": "Data Pipeline",
+      "description": "ETL pipeline for processing and analyzing business data",
+      "status": "active",
+      "createdAt": "2026-03-15T00:00:00.000Z",
+      "updatedAt": "2026-03-15T00:00:00.000Z"
+    },
+    {
+      "id": "10",
+      "name": "HR Portal",
+      "description": "Internal HR portal for employee management and onboarding",
+      "status": "archived",
+      "createdAt": "2026-04-01T00:00:00.000Z",
+      "updatedAt": "2026-04-01T00:00:00.000Z"
+    },
+    {
+      "id": "11",
+      "name": "Analytics Dashboard",
+      "description": "Real-time analytics dashboard for business metrics and KPIs",
+      "status": "active",
+      "createdAt": "2026-04-15T00:00:00.000Z",
+      "updatedAt": "2026-04-15T00:00:00.000Z"
+    },
+    {
+      "id": "12",
+      "name": "Security Audit",
+      "description": "Full security audit and penetration testing of all systems",
+      "status": "active",
+      "createdAt": "2026-05-01T00:00:00.000Z",
+      "updatedAt": "2026-05-01T00:00:00.000Z"
+    },
+    {
+      "id": "13",
+      "name": "Customer Portal",
+      "description": "Self-service portal for customers to manage their accounts",
+      "status": "active",
+      "createdAt": "2026-05-05T00:00:00.000Z",
+      "updatedAt": "2026-05-05T00:00:00.000Z"
+    },
+    {
+      "id": "14",
+      "name": "Notification Service",
+      "description": "Centralized notification service for email, SMS and push notifications",
+      "status": "active",
+      "createdAt": "2026-05-10T00:00:00.000Z",
+      "updatedAt": "2026-05-10T00:00:00.000Z"
+    },
+    {
+      "id": "15",
+      "name": "Inventory System",
+      "description": "Real-time inventory tracking and management system",
+      "status": "archived",
+      "createdAt": "2026-05-15T00:00:00.000Z",
+      "updatedAt": "2026-05-15T00:00:00.000Z"
+    },
+    {
+      "name": "NextJS Project",
+      "description": "Create NextJS, study the concepts of NextJS after React project",
+      "status": "active",
+      "createdAt": "2026-05-23T13:56:29.523Z",
+      "updatedAt": "2026-05-23T13:56:29.523Z",
+      "id": "9-lYRWjDMJw"
     }
   ],
   "tasks": [
@@ -202,6 +298,195 @@
       "name": "AI integration",
       "description": "Integrate AI model for code analysis",
       "status": "todo",
+      "priority": "medium",
+      "dueDate": "2026-04-15"
+    },
+    {
+      "id": "20",
+      "projectId": "5",
+      "name": "Payment integration",
+      "description": "Integrate Stripe for payments",
+      "status": "in_progress",
+      "priority": "high",
+      "dueDate": "2026-05-01"
+    },
+    {
+      "id": "21",
+      "projectId": "5",
+      "name": "Product catalog",
+      "description": "Build product catalog with search and filters",
+      "status": "todo",
+      "priority": "medium",
+      "dueDate": "2026-05-15"
+    },
+    {
+      "id": "22",
+      "projectId": "5",
+      "name": "Shopping cart",
+      "description": "Build shopping cart with persistent state",
+      "status": "todo",
+      "priority": "high",
+      "dueDate": "2026-05-20"
+    },
+    {
+      "id": "23",
+      "projectId": "6",
+      "name": "Contact management",
+      "description": "Build contact management module",
+      "status": "in_progress",
+      "priority": "high",
+      "dueDate": "2026-05-10"
+    },
+    {
+      "id": "24",
+      "projectId": "6",
+      "name": "Sales pipeline",
+      "description": "Build sales pipeline visualization",
+      "status": "todo",
+      "priority": "medium",
+      "dueDate": "2026-05-20"
+    },
+    {
+      "id": "25",
+      "projectId": "6",
+      "name": "Email campaigns",
+      "description": "Build email campaign management",
+      "status": "todo",
+      "priority": "low",
+      "dueDate": "2026-06-01"
+    },
+    {
+      "id": "26",
+      "projectId": "8",
+      "name": "Component library",
+      "description": "Build core component library",
+      "status": "in_progress",
+      "priority": "high",
+      "dueDate": "2026-06-01"
+    },
+    {
+      "id": "27",
+      "projectId": "8",
+      "name": "Documentation",
+      "description": "Write component documentation",
+      "status": "todo",
+      "priority": "medium",
+      "dueDate": "2026-06-15"
+    },
+    {
+      "id": "28",
+      "projectId": "9",
+      "name": "Data ingestion",
+      "description": "Build data ingestion pipeline",
+      "status": "todo",
+      "priority": "high",
+      "dueDate": "2026-06-15"
+    },
+    {
+      "id": "29",
+      "projectId": "9",
+      "name": "Data transformation",
+      "description": "Build data transformation layer",
+      "status": "todo",
+      "priority": "medium",
+      "dueDate": "2026-06-30"
+    },
+    {
+      "id": "30",
+      "projectId": "11",
+      "name": "KPI dashboard",
+      "description": "Build main KPI dashboard",
+      "status": "in_progress",
+      "priority": "high",
+      "dueDate": "2026-06-01"
+    },
+    {
+      "id": "31",
+      "projectId": "11",
+      "name": "Real-time updates",
+      "description": "Add websocket support for real-time data",
+      "status": "todo",
+      "priority": "medium",
+      "dueDate": "2026-06-15"
+    },
+    {
+      "id": "32",
+      "projectId": "12",
+      "name": "Vulnerability scan",
+      "description": "Run automated vulnerability scan",
+      "status": "done",
+      "priority": "high",
+      "dueDate": "2026-05-15"
+    },
+    {
+      "id": "33",
+      "projectId": "12",
+      "name": "Penetration testing",
+      "description": "Manual penetration testing of all endpoints",
+      "status": "in_progress",
+      "priority": "high",
+      "dueDate": "2026-06-01"
+    },
+    {
+      "id": "34",
+      "projectId": "13",
+      "name": "Account management",
+      "description": "Build account settings and management",
+      "status": "todo",
+      "priority": "high",
+      "dueDate": "2026-06-01"
+    },
+    {
+      "id": "35",
+      "projectId": "13",
+      "name": "Billing portal",
+      "description": "Build self-service billing portal",
+      "status": "in_progress",
+      "priority": "high",
+      "dueDate": "2026-06-15"
+    },
+    {
+      "id": "36",
+      "projectId": "14",
+      "name": "Email service",
+      "description": "Integrate SendGrid for email notifications",
+      "status": "done",
+      "priority": "high",
+      "dueDate": "2026-05-20"
+    },
+    {
+      "id": "37",
+      "projectId": "14",
+      "name": "SMS service",
+      "description": "Integrate Twilio for SMS notifications",
+      "status": "in_progress",
+      "priority": "medium",
+      "dueDate": "2026-06-01"
+    },
+    {
+      "id": "38",
+      "projectId": "14",
+      "name": "Push notifications",
+      "description": "Integrate Firebase for push notifications",
+      "status": "todo",
+      "priority": "medium",
+      "dueDate": "2026-06-15"
+    },
+    {
+      "id": "39",
+      "projectId": "15",
+      "name": "Stock tracking",
+      "description": "Build real-time stock level tracking",
+      "status": "done",
+      "priority": "high",
+      "dueDate": "2026-04-01"
+    },
+    {
+      "id": "40",
+      "projectId": "15",
+      "name": "Low stock alerts",
+      "description": "Build automated low stock alert system",
+      "status": "done",
       "priority": "medium",
       "dueDate": "2026-04-15"
     }
