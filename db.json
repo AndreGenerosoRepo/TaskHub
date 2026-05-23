@@ -20,7 +20,7 @@
       "id": "3",
       "name": "Internal Dashboard",
       "description": "Dashboard for the internal team",
-      "status": "archived",
+      "status": "active",
       "createdAt": "2024-01-01T00:00:00.000Z",
       "updatedAt": "2024-01-01T00:00:00.000Z"
     },
@@ -121,12 +121,12 @@
       "updatedAt": "2026-05-15T00:00:00.000Z"
     },
     {
+      "id": "SN2Wa8QIE3M",
       "name": "Mini NextJS project",
       "description": "Build a Mini NextJS project to consolidate the study.",
       "status": "active",
       "createdAt": "2026-05-23T14:36:18.119Z",
-      "updatedAt": "2026-05-23T14:36:18.119Z",
-      "id": "SN2Wa8QIE3M"
+      "updatedAt": "2026-05-23T14:36:18.119Z"
     }
   ],
   "tasks": [
@@ -284,7 +284,7 @@
       "id": "16",
       "projectId": "3",
       "name": "Role permissions",
-      "description": "Add role-based access control\ntestar o flexbox testar o flexbox testar o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox o flexbox \ntestar o flexbox\ntestar o flexbox\ntestar o flexbox\ntestar o flexbox",
+      "description": "Add role-based access control",
       "status": "in_progress",
       "priority": "high",
       "dueDate": "2026-04-01",
@@ -529,6 +529,96 @@
       "priority": "medium",
       "dueDate": "2026-04-15",
       "createdAt": "2026-03-20T00:00:00.000Z"
+    },
+    {
+      "id": "41",
+      "projectId": "7",
+      "name": "Setup Kong gateway",
+      "description": "Install and configure Kong API gateway",
+      "status": "done",
+      "priority": "high",
+      "dueDate": "2026-03-01",
+      "createdAt": "2026-02-16T00:00:00.000Z"
+    },
+    {
+      "id": "42",
+      "projectId": "7",
+      "name": "Rate limiting",
+      "description": "Configure rate limiting rules for all endpoints",
+      "status": "done",
+      "priority": "high",
+      "dueDate": "2026-03-10",
+      "createdAt": "2026-02-18T00:00:00.000Z"
+    },
+    {
+      "id": "43",
+      "projectId": "7",
+      "name": "Authentication middleware",
+      "description": "Implement JWT authentication middleware",
+      "status": "done",
+      "priority": "high",
+      "dueDate": "2026-03-15",
+      "createdAt": "2026-02-20T00:00:00.000Z"
+    },
+    {
+      "id": "44",
+      "projectId": "10",
+      "name": "Employee onboarding flow",
+      "description": "Build step-by-step onboarding workflow for new employees",
+      "status": "done",
+      "priority": "high",
+      "dueDate": "2026-04-15",
+      "createdAt": "2026-04-02T00:00:00.000Z"
+    },
+    {
+      "id": "45",
+      "projectId": "10",
+      "name": "Leave management",
+      "description": "Build leave request and approval system",
+      "status": "done",
+      "priority": "medium",
+      "dueDate": "2026-04-20",
+      "createdAt": "2026-04-05T00:00:00.000Z"
+    },
+    {
+      "id": "46",
+      "projectId": "10",
+      "name": "Payroll integration",
+      "description": "Integrate with payroll system for automatic salary processing",
+      "status": "done",
+      "priority": "high",
+      "dueDate": "2026-04-25",
+      "createdAt": "2026-04-08T00:00:00.000Z"
+    },
+    {
+      "id": "47",
+      "projectId": "SN2Wa8QIE3M",
+      "name": "Setup NextJS project",
+      "description": "Initialize NextJS project with Pages Router and TypeScript",
+      "status": "done",
+      "priority": "high",
+      "dueDate": "2026-05-25",
+      "createdAt": "2026-05-23T00:00:00.000Z"
+    },
+    {
+      "id": "48",
+      "projectId": "SN2Wa8QIE3M",
+      "name": "Build index page with getStaticProps",
+      "description": "Create the index page using getStaticProps to fetch data at build time",
+      "status": "in_progress",
+      "priority": "high",
+      "dueDate": "2026-05-27",
+      "createdAt": "2026-05-23T00:00:00.000Z"
+    },
+    {
+      "id": "49",
+      "projectId": "SN2Wa8QIE3M",
+      "name": "Build dynamic page with getServerSideProps",
+      "description": "Create a dynamic route [id].tsx using getServerSideProps for SSR",
+      "status": "todo",
+      "priority": "medium",
+      "dueDate": "2026-05-29",
+      "createdAt": "2026-05-23T00:00:00.000Z"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
