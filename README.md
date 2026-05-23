@@ -1,6 +1,6 @@
 # TaskHub
 
-A task and project management app built to practice the frontend stack used at my new company.
+A task and project management app built to practice the frontend stack used at Logrise company.
 
 ## Tech Stack
 
