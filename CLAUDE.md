@@ -82,3 +82,11 @@ src/
 - Sorting por qualquer coluna
 - Paginação
 - Sem ações — apenas consulta
+
+## Mobile Build (Capacitor)
+
+- @capacitor/core + @capacitor/cli + @capacitor/android instalados
+- Build gerado com `npm run build`
+- Android configurado com `npx cap add android`
+- Para sincronizar após alterações: `npx cap sync`
+- Para abrir no Android Studio: `npx cap open android` (requer Android Studio instalado)

@@ -75,6 +75,28 @@ src/
   types.ts        — Shared TypeScript interfaces
 ```
 
+## Mobile Build (Capacitor)
+
+This project is configured with Capacitor for Android builds.
+
+### Requirements
+
+- Android Studio (to run on emulator or device)
+
+### Commands
+
+```bash
+# Build the web app
+npm run build
+
+# Sync with Android
+npx cap sync
+
+# Open in Android Studio
+npx cap open android
+```
+
+
 ## What I learned
 
 This project was built in 6 days with spare time during a study period to practice the frontend stack used at Logrise company.
