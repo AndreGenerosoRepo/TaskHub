@@ -34,7 +34,7 @@ function ProjectDetailPage() {
   })
 
   if (isLoading) return (
-    <div style={{ display: 'flex', justifyContent: 'center', padding: '48px' }}>
+    <div className={styles.loading}>
       <Loader />
     </div>
   )
@@ -43,6 +43,7 @@ function ProjectDetailPage() {
       Project not found. The project you are looking for does not exist or has been deleted.
     </Alert>
   )
+  if (!project) return null
 
   return (
     <div>
