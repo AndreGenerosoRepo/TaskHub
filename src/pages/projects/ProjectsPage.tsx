@@ -24,7 +24,7 @@ function ProjectsPage() {
     })
 
     if (isLoading) return (
-        <div style={{ display: 'flex', justifyContent: 'center', padding: '48px' }}>
+        <div className={styles.loading}>
           <Loader />
         </div>
       )

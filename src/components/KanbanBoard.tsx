@@ -79,7 +79,7 @@ function KanbanCard({ task }: { task: Task }) {
         style={style}
         className={`${styles.card} ${priorityClass}`}
       >
-        <div {...listeners} {...attributes} style={{ cursor: 'grab' }}>
+        <div {...listeners} {...attributes}>
         <div className={styles.cardHeader}>
         <div className={styles.cardTitle}>{task.name}</div>
             <span className={styles.cardCreatedAt}>Created at: {dayjs(task.createdAt).format('DD MMM YY')}</span>
